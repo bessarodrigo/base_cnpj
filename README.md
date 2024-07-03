@@ -1,6 +1,12 @@
-# Separador de Dados
+# Separador de Dados de Empresas
 
-Este projeto tem como objetivo separar arquivos de uma base de dados de empresas brasileiras para a prospecção comercial de uma empresa. Devido ao tamanho e peso do arquivo original, foi criado um script para dividir o arquivo em vários menores.
+Este projeto tem como objetivo separar arquivos de uma base de dados de empresas brasileiras para a prospecção comercial. Devido ao tamanho e peso do arquivo original, foi criado um script para dividir o arquivo em vários menores.
+
+## Estrutura do Projeto
+
+- `MA2V - Base_Metropole.ipynb`: Script para manipulação da base de dados das empresas na capital da Bahia.
+- `MA2V - Base_Interior.ipynb`: Script para manipulação da base de dados das empresas no interior da Bahia.
+- `requirements.txt`: Arquivo com as dependências do projeto.
 
 ## Funcionalidades
 
@@ -15,7 +21,6 @@ Este projeto tem como objetivo separar arquivos de uma base de dados de empresas
 - Python 3.x
 - Pandas
 - Flask
-- python-dotenv
 
 ## Instalação
 
@@ -39,49 +44,33 @@ Este projeto tem como objetivo separar arquivos de uma base de dados de empresas
     pip install -r requirements.txt
     ```
 
-4. Crie um arquivo `.env` na raiz do projeto com base no arquivo `.env.example` e configure o caminho do arquivo Excel:
-
-    ```bash
-    cp .env.example .env
-    ```
-
-    Edite o arquivo `.env` para adicionar o caminho correto para o seu arquivo Excel:
-
-    ```env
-    EXCEL_FILE_PATH=seu_caminho
-    ```
-
 ## Uso
 
 ### Script de Manipulação de Dados
 
-1. Edite o caminho do arquivo no arquivo `.env`.
-
-2. Execute o script:
-
-    ```bash
-    python script_manipulacao_dados.py
-    ```
+1. Abra e execute o Jupyter Notebook `MA2V - Base_Metropole.ipynb` para manipular a base de dados das empresas na capital.
+2. Abra e execute o Jupyter Notebook `MA2V - Base_Interior.ipynb` para manipular a base de dados das empresas no interior.
 
 ### Servidor Flask para Download de Arquivos
 
-1. Edite o caminho do arquivo no arquivo `.env`.
+1. Execute o servidor Flask contido no notebook após a manipulação dos dados:
 
-2. Execute o servidor Flask:
+    ```python
+    from flask import Flask, send_file
+    import pandas as pd
 
-    ```bash
-    python server_flask.py
+    app = Flask(__name__)
+
+    @app.route('/download/<int:num_parte>')
+    def download_file(num_parte):
+        nome_arquivo = f'parte_{num_parte}.xlsx'
+        return send_file(nome_arquivo, as_attachment=True)
+
+    if __name__ == '__main__':
+        app.run()
     ```
 
-3. Acesse `http://127.0.0.1:5000/download/<num_parte>` para baixar a parte desejada do arquivo.
-
-## Estrutura do Projeto
-
-- `script_manipulacao_dados.py`: Script para manipulação de dados com Pandas.
-- `server_flask.py`: Script para criar um servidor Flask para download dos arquivos.
-- `.env.example`: Arquivo de exemplo contendo variáveis de ambiente.
-- `.gitignore`: Arquivo para ignorar o arquivo `.env` real.
-- `requirements.txt`: Arquivo com as dependências do projeto.
+2. Acesse `http://127.0.0.1:5000/download/<num_parte>` para baixar a parte desejada do arquivo.
 
 ## Licença
 
