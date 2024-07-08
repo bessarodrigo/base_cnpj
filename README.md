@@ -70,7 +70,3 @@ Este projeto tem como objetivo separar arquivos de uma base de dados de empresas
     ```
 
 2. Acesse `http://127.0.0.1:5000/download/<num_parte>` para baixar a parte desejada do arquivo.
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
