@@ -12,7 +12,7 @@ Este projeto tem como objetivo separar arquivos de uma base de dados de empresas
 
 - Leitura de um arquivo Excel contendo a base de dados.
 - Seleção de colunas específicas para prospecção.
-- Divisão do DataFrame em partes de 5.000 linhas.
+- Divisão do DataFrame em partes de X linhas.
 - Salvamento das partes em arquivos Excel separados.
 - Servidor Flask para download das partes geradas.
 
