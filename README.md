@@ -6,6 +6,7 @@ Este projeto tem como objetivo separar arquivos de uma base de dados de empresas
 
 - `MA2V - Base_Metropole.ipynb`: Script para manipulação da base de dados das empresas na capital da Bahia.
 - `MA2V - Base_Interior.ipynb`: Script para manipulação da base de dados das empresas no interior da Bahia.
+- 'MA2V - Base_SP.ipynb.ipynb': Script para manipulação da base de dados das empresas de São Paulo
 
 ## Funcionalidades
 
